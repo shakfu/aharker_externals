@@ -1,0 +1,15 @@
+
+Matchers for audio rate object
+Pick matching algorithm?
+Finalise stats
+
+PARTIAL		Dict passing
+DONE		Dataview/edit
+		- edit whilst data is being added/changing…
+		- update on value changes…
+DONE		Notification of dirty for embedding  
+DONE		Threading and locking (including read promote to write
+
+Check all speeds (including remove/stats/lookup etc.)
+Clean up
+

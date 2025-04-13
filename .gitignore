@@ -1,47 +1,35 @@
-﻿
-# Apple Finder Database
-
-.DS_Store
-
-# Microsoft VS
-
-*.sdf
-*.suo
-*.user
-*.sln.docstates
-.vs/
-
-# XCode
-
-*.mode1
-*.mode2v3
-*.mode1v3
-*.pbxuser
-*.perspectivev3
-*.xcuserstate
-*xcuserdata
-xcuserdata/
-
-!default.pbxuser
-!default.mode1
-!default.mode1v3
-!default.mode2v3
-!default.perspectivev3
-
-# Windows Build Directories
-
-AH_Externals_Builds/
-AH_Externals_Intermediate/
-
-# CVS Folders
-
-CVS/
-
-# MaxSDKs
-
-c74support/
-
-# Builds
-
-*.mxo
+# dirs, files, and patters to exclude
+**/project.xcworkspace
+**/xcshareddata
+**/xcuserdata
+*.dylib
+*.mxe
 *.mxe64
+*.mxo
+*.o
+*.opensdf
+*.pyc
+*.sdf
+*.sln
+*.suo
+.DS_Store
+.env
+.mypy_cache
+.pytest_cache
+.quarto
+.vs
+.vscode
+.venv
+__pycache__
+build
+CMakeFiles
+env.sh
+externals/*
+extensions/*
+javascript/node_modules
+log.txt
+logs
+package-info.json
+support/*
+sysbuild
+tmp
