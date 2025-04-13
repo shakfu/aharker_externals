@@ -15,14 +15,14 @@ This is a friendly fork of [Alex Harker's externals project](https://github.com/
 
 - Added missing dependencies such as `HISSTools_Library`.
 
-- Add a Makefile, so just `make` to build everything on MacOS.
+- Added a Makefile, so just `make` to build everything on MacOS.
 
 
 Conversion completed:
 
 - [x] conversion
 - [x] convolution
-- [x] descriptors (except for `entrymatch` externals due to a number of api functions no longer being available)[^1].
+- [x] descriptors (except for `entrymatch` externals due to a number of api methods no longer being available)[^1].
 - [x] dynamic-suite[^2]
 - [x] gesture-suite
 - [x] ibuffer-suite
@@ -37,7 +37,7 @@ Only tested on MacOS so far.
 
 [^1]: The Max 8.2.0 SDK seems to be missing the following api functions from `jdataview.h`: `jdataview_getselectedrowsforview`,  `jdataview_redrawcolumn`, and `jdataview_selectedrowcount`
 
-[^2]: `dynamic-suite/Common/thread_set.cpp` was patched as per recommended by [accepted answer](https://developer.apple.com/forums/thread/703361) and [this review](https://codereview.chromium.org/276043002/)
+[^2]: `dynamic-suite/Common/thread_set.cpp` was patched as per recommendation by [accepted answer](https://developer.apple.com/forums/thread/703361) and [this review](https://codereview.chromium.org/276043002/)
 
 
 ## Some Areas Addressed:
