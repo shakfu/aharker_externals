@@ -7,22 +7,22 @@ A Set of 80+ Externals for a variety of tasks in Cycling 74's Max.
 
 This is a friendly fork of [Alex Harker's externals project](https://github.com/AlexHarker/AHarker_Externals/). The key improvements are:
 
-- Modern in-package cross-platform cmake-based building.
+- Cross-platform in-package cmake-based building.
 
 - Included `max-sdk-base` as git submodule
 
-- Each external has been moved to it own folder
+- Each external has been moved to its own folder.
 
-- Added missing dependencies
+- Added missing dependencies such as `HISSTools_Library`.
 
-- Add a Makefile, so just `make` to build everything
+- Add a Makefile, so just `make` to build everything on MacOS.
 
 
 Conversion completed:
 
 - [x] conversion
 - [x] convolution
-- [x] descriptors (except for `entrymatch` externals due to a number of api functions no longer being available [^1].
+- [x] descriptors (except for `entrymatch` externals due to a number of api functions no longer being available)[^1].
 - [x] dynamic-suite[^2]
 - [x] gesture-suite
 - [x] ibuffer-suite
@@ -32,6 +32,8 @@ Conversion completed:
 - [x] threading
 - [x] utility
 - [x] vMSP
+
+Only tested on MacOS so far.
 
 [^1]: The Max 8.2.0 SDK seems to be missing the following api functions from `jdataview.h`: `jdataview_getselectedrowsforview`,  `jdataview_redrawcolumn`, and `jdataview_selectedrowcount`
 
