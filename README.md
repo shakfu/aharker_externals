@@ -11,13 +11,13 @@ This is a friendly fork of [Alex Harker's externals project](https://github.com/
 
 - All dependencies included.
 
-- Included `max-sdk-base` as git submodule (`make setup` after `git clone`)
+	- Included `max-sdk-base` as git submodule (`make setup` after `git clone`)
+
+	- Added missing dependencies such as `HISSTools_Library`.
 
 - Added a `Makefile` to call cmake, so just `make` to build everything on MacOS.
 
 - Each external has been moved to its own folder.
-
-- Added missing dependencies such as `HISSTools_Library`.
 
 - Some modifications to make it possible to build on Max SDK 8.20 (see below)
 
