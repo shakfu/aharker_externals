@@ -24,7 +24,7 @@ Conversion completed:
 
 - [x] conversion
 - [x] convolution
-- [x] descriptors (except for `entrymatch` externals due to a number of api methods no longer being available)[^1].
+- [x] descriptors (except for `entrymatcher` externals due to a number of api methods no longer being available)[^1].
 - [x] dynamic-suite[^2]
 - [x] gesture-suite
 - [x] ibuffer-suite
