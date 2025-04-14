@@ -7,11 +7,13 @@ A Set of 80+ Externals for a variety of tasks in Cycling 74's Max.
 
 This is a friendly fork of [Alex Harker's externals project](https://github.com/AlexHarker/AHarker_Externals/). The key improvements (only tested on MacOS so far) are:
 
-- Cmake-based building
+- Cmake-based building.
 
-- Added a `Makefile` to call cmake, so just `make` to build everything on MacOS.
+- All dependencies included.
 
 - Included `max-sdk-base` as git submodule (`make setup` after `git clone`)
+
+- Added a `Makefile` to call cmake, so just `make` to build everything on MacOS.
 
 - Each external has been moved to its own folder.
 
