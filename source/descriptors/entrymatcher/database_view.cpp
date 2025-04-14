@@ -349,8 +349,8 @@ void database_view_update(t_database_view *x)
         }
     }
     
-    for (long i = 0; i < database.num_columns(); i++)
-        jdataview_redrawcolumn(x->dataview, database.get_column_name(i));
+    // for (long i = 0; i < database.num_columns(); i++)
+    //     jdataview_redrawcolumn(x->dataview, database.get_column_name(i));
 }
 
 // Notifications
@@ -492,8 +492,8 @@ void database_view_sort(t_database_view *x, t_symbol *colname, t_privatesortrec 
     
     long selection_index = -1;
     
-    if (jdataview_selectedrowcount(x->dataview))
-        selection_index = map_rowref_to_index(x, *jdataview_getselectedrowsforview(x->dataview, x->patcherview));
+    // if (jdataview_selectedrowcount(x->dataview))
+    //     selection_index = map_rowref_to_index(x, *jdataview_getselectedrowsforview(x->dataview, x->patcherview));
     
     // Get the column and store the sorting direction
     
