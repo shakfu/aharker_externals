@@ -39,3 +39,5 @@ setup:
 	else \
 		echo "... symlink already exists" ; \
 	fi
+	@./source/scripts/regen_linker_flags.sh
+	@echo "linker files synced"
