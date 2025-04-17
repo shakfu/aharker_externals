@@ -38,13 +38,19 @@ Conversion completed:
 
 ### IMPORTANT NOTE
 
-This project uses a [modified max-sdk-base](https://github.com/shakfu/max-sdk-base) as a submodule which fixes a linking error in `max-sdk-base` which was flagged and resolved in this [forum post](https://cycling74.com/forums/missing-jdataview-methods-in-max-sdk-820?replyPage=1#reply-67fdbe503bd53f00135c8827). (Thanks to Rob Ramirez and Joshua Kit Clayton for help in identifying and resolving this issue!)
+This project uses a [patched max-sdk-base](https://github.com/shakfu/max-sdk-base) as a submodule which fixes a linking error in `max-sdk-base` which was flagged and resolved in this [forum post](https://cycling74.com/forums/missing-jdataview-methods-in-max-sdk-820?replyPage=1#reply-67fdbe503bd53f00135c8827). (Thanks to Rob Ramirez and Joshua Kit Clayton for help in identifying and resolving this issue!)
 
-Subsequently a [PR](https://github.com/Cycling74/max-sdk-base/pull/13) with the fix applied to push the fix to the `max-sdk-base` project.
+Subsequently a [PR](https://github.com/Cycling74/max-sdk-base/pull/13) was created with fix applied in the `max-sdk-base` project.
 
 The issue is related to the following api functions from `jdataview.h`: `jdataview_getselectedrowsforview`,  `jdataview_redrawcolumn`, and `jdataview_selectedrowcount`, which are used in `source/descriptors/entrymatcher/database_view.cpp` may trigger an `Undefined symbols` error during compilation.
 
-As per Joshua Kit Clayton: "For some reason, the max-sdk-base/script/max-linker-flags.txt is out of sync with the max-sdk-base/c74support/max-includes/c74_linker_flags.txt file". To fix this we have applied the perl script with the fix to the modified `max-sdk-base`used in this project.
+As per Joshua Kit Clayton's response in the post above: "For some reason, the max-sdk-base/script/max-linker-flags.txt is out of sync with the max-sdk-base/c74support/max-includes/c74_linker_flags.txt file. Running the following perl script should let you regenerate the max-linker-flags.txt file with all of the exports. This then compiles properly for me.". 
+
+```sh
+perl -pe "s/(-Wl,-U,_\S+)/'\$1'/g" max-sdk/source/max-sdk-base/c74support/max-includes/c74_linker_flags.txt > max-sdk/source/max-sdk-base/script/max-linker-flags.txt
+```
+
+Initially, the script was included in this project so it could be applied to fix `max-sdk-base` submodule, but this had some undiserable side effects due to the submodule being modifed, hence the fix was applied to create the modified `max-sdk-base` [fork](https://github.com/shakfu/max-sdk-base) used in this project which is simpler (at least until the the PR above is accepted.)
 
 If you are using a regular non-fixed version of `max-sdk-base`, you can apply the fix by running `./source/scripts/regen_linker_flags.sh` to sync up the two `*-linker-flags.txt` in the `max-sdk-base`.
 
