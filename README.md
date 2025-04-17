@@ -21,16 +21,12 @@ This is a friendly fork of [Alex Harker's externals project](https://github.com/
 
 - Some modifications to make it possible to build on Max SDK 8.20 (see below)
 
-
-**IMPORTANT NOTE**: the following api functions from `jdataview.h`: `jdataview_getselectedrowsforview`,  `jdataview_redrawcolumn`, and `jdataview_selectedrowcount`, which are used in `source/descriptos/entrymatcher/database_view.cpp` may trigger an `Undefined symbols` error during compilation. If that happens, run `./source/scripts/regen_linker_flags.sh` to sync up the two `*-linker-flags.txt` in the `max-sdk-base`. This is a known issue as per this [forum post](https://cycling74.com/forums/missing-jdataview-methods-in-max-sdk-820?replyPage=1#reply-67fdbe503bd53f00135c8827) and will likely get fixed in another iteration of `max-sdk-base`. The `make setup` command, which is suggested to be run once after cloning this project, updates the `max-sdk-base` submodule, symlinks the cloned directory to the `Packages` directory of Max 9 and will also run this `regen` script once. (Thanks to Rob Ramirez and Joshua Kit Clayton for help in identifying and resolving this issue!)
-
-
 Conversion completed:
 
 - [x] conversion
 - [x] convolution
 - [x] descriptors (see important note about `entrymatcher` above)
-- [x] dynamic-suite[^1]
+- [x] dynamic-suite
 - [x] gesture-suite
 - [x] ibuffer-suite
 - [x] miscellaneous
@@ -40,8 +36,13 @@ Conversion completed:
 - [x] utility
 - [x] vMSP
 
+### IMPORTANT NOTE
 
-[^1]: In `dynamic-suite/Common/thread_set.cpp`, the use of `mach_task_self()` was not possible and was replaced with `pthread_mach_thread_np(pthread_self()` as per recommendation by [accepted answer](https://developer.apple.com/forums/thread/703361) and [this review](https://codereview.chromium.org/276043002/)
+The following api functions from `jdataview.h`: `jdataview_getselectedrowsforview`,  `jdataview_redrawcolumn`, and `jdataview_selectedrowcount`, which are used in `source/descriptors/entrymatcher/database_view.cpp` may trigger an `Undefined symbols` error during compilation.
+
+If that happens, run `./source/scripts/regen_linker_flags.sh` to sync up the two `*-linker-flags.txt` in the `max-sdk-base`.
+
+This is a known issue as per this [forum post](https://cycling74.com/forums/missing-jdataview-methods-in-max-sdk-820?replyPage=1#reply-67fdbe503bd53f00135c8827) and will likely get fixed in another iteration of `max-sdk-base`. The `make setup` command, which is suggested to be run once after cloning this project, updates the `max-sdk-base` submodule, symlinks the cloned directory to the `Packages` directory of Max 9 and will also run this `regen` script once. (Thanks to Rob Ramirez and Joshua Kit Clayton for help in identifying and resolving this issue!)
 
 
 ## Some Areas Addressed:
