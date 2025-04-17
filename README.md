@@ -38,12 +38,15 @@ Conversion completed:
 
 ### IMPORTANT NOTE
 
-The following api functions from `jdataview.h`: `jdataview_getselectedrowsforview`,  `jdataview_redrawcolumn`, and `jdataview_selectedrowcount`, which are used in `source/descriptors/entrymatcher/database_view.cpp` may trigger an `Undefined symbols` error during compilation.
+This project uses a [modified max-sdk-base](https://github.com/shakfu/max-sdk-base) as a submodule which fixes a linking error in `max-sdk-base` which was flagged and resolved in this [forum post](https://cycling74.com/forums/missing-jdataview-methods-in-max-sdk-820?replyPage=1#reply-67fdbe503bd53f00135c8827). (Thanks to Rob Ramirez and Joshua Kit Clayton for help in identifying and resolving this issue!)
 
-If that happens, run `./source/scripts/regen_linker_flags.sh` to sync up the two `*-linker-flags.txt` in the `max-sdk-base`.
+Subsequently a [PR](https://github.com/Cycling74/max-sdk-base/pull/13) with the fix applied to push the fix to the `max-sdk-base` project.
 
-This is a known issue as per this [forum post](https://cycling74.com/forums/missing-jdataview-methods-in-max-sdk-820?replyPage=1#reply-67fdbe503bd53f00135c8827) and will likely get fixed in another iteration of `max-sdk-base`. The `make setup` command, which is suggested to be run once after cloning this project, updates the `max-sdk-base` submodule, symlinks the cloned directory to the `Packages` directory of Max 9 and will also run this `regen` script once. (Thanks to Rob Ramirez and Joshua Kit Clayton for help in identifying and resolving this issue!)
+The issue is related to the following api functions from `jdataview.h`: `jdataview_getselectedrowsforview`,  `jdataview_redrawcolumn`, and `jdataview_selectedrowcount`, which are used in `source/descriptors/entrymatcher/database_view.cpp` may trigger an `Undefined symbols` error during compilation.
 
+As per Joshua Kit Clayton: "For some reason, the max-sdk-base/script/max-linker-flags.txt is out of sync with the max-sdk-base/c74support/max-includes/c74_linker_flags.txt file". To fix this we have applied the perl script with the fix to the modified `max-sdk-base`used in this project.
+
+If you are using a regular non-fixed version of `max-sdk-base`, you can apply the fix by running `./source/scripts/regen_linker_flags.sh` to sync up the two `*-linker-flags.txt` in the `max-sdk-base`.
 
 ## Some Areas Addressed:
 
