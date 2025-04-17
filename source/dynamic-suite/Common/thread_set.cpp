@@ -77,8 +77,7 @@ semaphore::semaphore(long max_count) : m_valid(true)
 semaphore::~semaphore()
 {
     assert(!m_valid && "Semaphore not closed before deletion");
-    semaphore_destroy(pthread_mach_thread_np(pthread_self()), m_internal);
-    // semaphore_destroy(mach_task_self(), m_internal);
+    semaphore_destroy(mach_task_self(), m_internal);
 }
 
 void semaphore::close()
