@@ -1,0 +1,3 @@
+[submodule "source/max-sdk-base"]
+	path = source/max-sdk-base
+	url = https://github.com/shakfu/max-sdk-base.git
