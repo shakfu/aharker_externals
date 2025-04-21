@@ -1,36 +1,11 @@
 include(${CMAKE_CURRENT_SOURCE_DIR}/../../max-sdk-base/script/max-pretarget.cmake)
 
-
-
-include_directories( 
-	"${MAX_SDK_INCLUDES}"
-	"${MAX_SDK_MSP_INCLUDES}"
-	"${MAX_SDK_JIT_INCLUDES}"
-	"${COMMON_INCLUDES}"
-	${CMAKE_CURRENT_SOURCE_DIR}/../Common
+add_msp_external(
+    INCLUDE_DIRS
+        ${CMAKE_CURRENT_SOURCE_DIR}/../Common
+    OTHER_SOURCE
+    	${CMAKE_CURRENT_SOURCE_DIR}/../Common/patch_slot.cpp
+    	${CMAKE_CURRENT_SOURCE_DIR}/../Common/thread_set.cpp
 )
-
-file(GLOB PROJECT_SRC
-     "*.h"
-	"*.c"
-     "*.cpp"
-)
-
-
-add_library( 
-	${PROJECT_NAME} 
-	MODULE
-	${PROJECT_SRC}
-	${CMAKE_CURRENT_SOURCE_DIR}/../Common/patch_slot.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/../Common/thread_set.cpp
-)
-
-# target_link_libraries(
-# 	${PROJECT_NAME}
-# 	PUBLIC
-# 	"-framework Accelerate"
-# 	"-framework Kernel"
-# 	"-framework KernelManagement"
-# )
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/../../max-sdk-base/script/max-posttarget.cmake)

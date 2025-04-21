@@ -7,7 +7,7 @@ A Set of 80+ Externals for a variety of tasks in Cycling 74's Max.
 
 This is a friendly fork of [Alex Harker's externals project](https://github.com/AlexHarker/AHarker_Externals/). The key improvements (only tested on MacOS so far) are:
 
-- [CMake](https://cmake.org)-based building.
+- [CMake](https://cmake.org)-based cross-platform building. 
 
 - Added a `Makefile` to call cmake, so just `make` to build everything on MacOS.
 
@@ -29,12 +29,14 @@ Conversion completed:
 - [x] dynamic-suite
 - [x] gesture-suite
 - [x] ibuffer-suite
-- [x] miscellaneous
+- [x] miscellaneous [^1]
 - [x] random-numbers
 - [x] sample-accurate-suite
 - [x] threading
 - [x] utility
 - [x] vMSP
+
+[^1]: `ajh.wiiremote` is not converted because some of the `IOBluetooth.framework` c-apis it uses are deprecated with only objc api replacements available.
 
 ### IMPORTANT NOTE
 

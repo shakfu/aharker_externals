@@ -27,6 +27,10 @@ if (APPLE)
 endif()
 
 
+include(${CMAKE_SOURCE_DIR}/source/scripts/cmake/fn_add_msp_external.cmake)
+include(${CMAKE_SOURCE_DIR}/source/scripts/cmake/fn_add_max_external.cmake)
+
+
 MACRO(SUBDIRLIST result curdir)
   FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
   SET(dirlist "")

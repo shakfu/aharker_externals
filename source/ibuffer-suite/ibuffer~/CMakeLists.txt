@@ -1,32 +1,15 @@
 include(${CMAKE_CURRENT_SOURCE_DIR}/../../max-sdk-base/script/max-pretarget.cmake)
 
 
-
-include_directories( 
-	"${MAX_SDK_INCLUDES}"
-	"${MAX_SDK_MSP_INCLUDES}"
-	"${MAX_SDK_JIT_INCLUDES}"
-	"${COMMON_INCLUDES}"
+add_msp_external(
+    OTHER_SOURCE
+        ${CMAKE_CURRENT_SOURCE_DIR}/AudioFile/BaseAudioFile.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/AudioFile/IAudioFile.cpp
+    INCLUDE_DIRS
+        ${CMAKE_CURRENT_SOURCE_DIR}/AudioFile
+    LINK_LIBS
+        hisstools
 )
 
-file(GLOB PROJECT_SRC
-     "*.h"
-	"*.c"
-     "*.cpp"
-)
-
-
-add_library( 
-	${PROJECT_NAME} 
-	MODULE
-	${PROJECT_SRC}
-)
-
-
-target_link_libraries(
-	${PROJECT_NAME}
-	PUBLIC
-	hisstools
-)
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/../../max-sdk-base/script/max-posttarget.cmake)
