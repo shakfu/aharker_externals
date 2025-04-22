@@ -1,11 +1,10 @@
 # AHarker Externals
 
-A Set of 80+ Externals for a variety of tasks in Cycling 74's Max.
-
+A Set of 80+ Externals for a variety of tasks in Cycling 74's Max by Alex Harker.
 
 ## FORK NOTE
 
-This is a friendly fork of [Alex Harker's externals project](https://github.com/AlexHarker/AHarker_Externals/). The key improvements (only tested on MacOS so far) are:
+This is a friendly fork of [Alex Harker's externals project](https://github.com/AlexHarker/AHarker_Externals/). The key improvements (mostly tested on MacOS so far) are:
 
 - [CMake](https://cmake.org)-based cross-platform building. 
 
@@ -38,54 +37,92 @@ Conversion completed:
 
 [^1]: `ajh.wiiremote` is not converted because some of the `IOBluetooth.framework` c-apis it uses are deprecated with only objc api replacements available.
 
-### IMPORTANT NOTE
+## Overview
 
-This project uses a [patched max-sdk-base](https://github.com/shakfu/max-sdk-base) as a submodule which fixes a linking error in `max-sdk-base` which was flagged and resolved in this [forum post](https://cycling74.com/forums/missing-jdataview-methods-in-max-sdk-820?replyPage=1#reply-67fdbe503bd53f00135c8827). (Thanks to Rob Ramirez and Joshua Kit Clayton for help in identifying and resolving this issue!)
 
-Subsequently a [PR](https://github.com/Cycling74/max-sdk-base/pull/13) was created with fix to be hopefully applied in a future version of `max-sdk-base`.
+A Set of 80+ Externals for a variety of tasks in Cycling 74's Max by Alex Harker
 
-The issue is related to the following api functions from `jdataview.h`: `jdataview_getselectedrowsforview`,  `jdataview_redrawcolumn`, and `jdataview_selectedrowcount`, which are used in `source/descriptors/entrymatcher/database_view.cpp` and which may trigger an `Undefined symbols` error during compilation.
-
-As per Joshua Kit Clayton's response in the post above: "For some reason, the `max-sdk-base/script/max-linker-flags.txt` is out of sync with the `max-sdk-base/c74support/max-includes/c74_linker_flags.txt file`. Running the following perl script should let you regenerate the `max-linker-flags.txt` file with all of the exports. This then compiles properly for me."
-
-```sh
-perl -pe "s/(-Wl,-U,_\S+)/'\$1'/g" max-sdk/source/max-sdk-base/c74support/max-includes/c74_linker_flags.txt > max-sdk/source/max-sdk-base/script/max-linker-flags.txt
-```
-
-Initially, the script was included in this project so it could be applied to fix `max-sdk-base` submodule, but this had some undiserable side effects due to the submodule being modifed, hence the fix was applied to create the modified `max-sdk-base` [fork](https://github.com/shakfu/max-sdk-base) used in this project which is simpler (at least until the the PR above is accepted.)
-
-If you are using a regular unfixed version of `max-sdk-base`, you can apply the fix by running `./source/scripts/regen_linker_flags.sh` to sync up the two `*-linker-flags.txt` in the `max-sdk-base`.
-
-## Some Areas Addressed:
+Overview:
 
 - general purpose scaling for Max and MSP
-- efficient partitioned + non- partitioned convolution
+
+- efficient partitioned + non-partitioned convolution
+
 - comprehensive descriptor analysis (realtime + non-realtime)
+
 - enhanced audio multi-threading / dynamic patch loading
+
 - efficient buffer playback and storage
+
 - high quality random number generators for Max and MSP
+
 - sample accurate voice management and more
+
 - thread debugging and switching
+
 - utility objects
+
 - SIMD versions of 35 basic MSP objects
 
-## AHarker Externals Online:
+AHarker Externals:
 
-- To access the source code: https://github.com/AlexHarker/AHarker_Externals/
+- support Mac and Windows in 64bit, including support for Apple Silicon (M1) processors.
 
-- FrameLib can be discussed at https://framelib.discourse.group
+- are licensed under the 3-clause BSD license.
 
-## Credits:
+Enjoy!
 
-- **AHarker Externals** by *Alex Harker* <br>
+Alex
 
-## AHarker Externals makes use of:
-
-- Code for calculating roughness by *Richard Parncutt* and published with permission.
-
-- Code for calcutaing the lower tail quantile for a normal distribution function by *Peter J. Acklam* / *Chad Sprouse* (C port from PERL code)
+## Package Releases / Binaries
 
 
-## Contact:
+- At this time alpha releases are available via GitHub **[releases](https://github.com/AlexHarker/AHarker_Externals/releases)**. 
 
-- ajharker@gmail.com
+- Until official release some objects interfaces may change.
+
+- Please note that the behaviour of *descriptors~ / descriptorsrt~* may differ from earlier versions. 
+
+- Please report any issues with the issues page on GitHub. 
+
+## Compiling
+
+Should you wish to compile the externals yourself you will require the following:
+
+### MacOS
+
+1. Xcode
+2. The max-sdk-base repository (https://github.com/Cycling74/max-sdk-base)
+
+*Notes*
+
+- The `max-sdk-base` repository main folder should be located next to (in the same enclosing folder as) the main folder for this repository.
+
+- The location for the `max-sdk-base` can be modified in `Config_AHarker_Externals.xcconfig` if desired.
+
+- AVX / SSE support can also be toggled in `Config_AHarker_Externals.xcconfig` (for old machines, or Rosetta 2 support).
+
+### Windows
+
+1. Visual Studio
+
+2. OneMKL *or* OneAPI Base Toolkit (which includes OneMKL)
+    
+    - <https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-download.html>
+	
+	- <https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html>
+  
+3. The max-sdk-base repository (https://github.com/Cycling74/max-sdk-base)
+
+**Notes**
+
+- The `max-sdk-base` repository main folder should be located next to (in the same enclosing folder as) the main folder for this repository.
+
+- The location for the `max-sdk-base` can be modified in AH_Win_Debug.props / AH_Win_Release.props if desired.
+
+## Contact
+
+
+- <ajharker@gmail.com>
+
+- <http://www.alexanderjharker.co.uk/>
