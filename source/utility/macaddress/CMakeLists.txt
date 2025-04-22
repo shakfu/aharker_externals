@@ -2,9 +2,11 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../../max-sdk-base/script/max-pretarget.cmak
 
 
 add_max_external(
-	LINK_LIBS
-		"-framework CoreFoundation"
-		"-framework SystemConfiguration"
+    LINK_LIBS
+        "$<$<PLATFORM_ID:Darwin>:-framework CoreFoundation>"
+        "$<$<PLATFORM_ID:Darwin>:-framework SystemConfiguration>"
+        $<$<PLATFORM_ID:Windows>:ws_32>
+        $<$<PLATFORM_ID:Windows>:iphlpapi>
 )
 
 
