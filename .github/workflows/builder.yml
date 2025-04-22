@@ -53,10 +53,10 @@ jobs:
         mkdir build
         cd build
         python -m venv venv
-        venv\Scripts\activate.bat
+        . venv/bin/activate
         pip install mkl-static
         ls venv/Library/lib
-        
+
 
     # - name: Build externals
     #   run: |
