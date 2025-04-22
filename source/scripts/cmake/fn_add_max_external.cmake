@@ -123,8 +123,8 @@ function(add_max_external)
         PRIVATE
         "${AHEXT_LINK_LIBS}"
         "$<$<PLATFORM_ID:Darwin>:-framework Accelerate>"
-        $<$<PLATFORM_ID:Windows>:umf>
-        $<$<PLATFORM_ID:Windows>:disjoint_pool>
+        # $<$<PLATFORM_ID:Windows>:umf>
+        # $<$<PLATFORM_ID:Windows>:disjoint_pool>
         $<$<PLATFORM_ID:Windows>:mkl_core>
         $<$<PLATFORM_ID:Windows>:mkl_intel_lp64>
         $<$<PLATFORM_ID:Windows>:mkl_sequential>

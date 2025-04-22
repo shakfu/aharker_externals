@@ -41,12 +41,6 @@ jobs:
         submodules: 'recursive'
         fetch-depth: '0'
 
-    # - name: Setup python
-    #   uses: actions/setup-python@v4
-    #   with:
-    #     python-version: ${{ github.event.inputs.py_version }}
-    #     cache: 'pipenv' # caching pip dependencies
-
     - name: setup mkl venv
       if: runner.os == 'Windows'
       run: |
@@ -55,12 +49,6 @@ jobs:
         python -m venv venv
         venv\Scripts\activate.bat
         pip install mkl-static
-
-    # - name: install python requirements
-    #   run: pipenv install -r requirements.txt
-
-    # - name: Display python version
-    #   run: python3 --version
 
     - name: Build externals
       run: |
