@@ -41,6 +41,12 @@ jobs:
         submodules: 'recursive'
         fetch-depth: '0'
 
+    # - name: Setup python
+    #   uses: actions/setup-python@v4
+    #   with:
+    #     python-version: ${{ github.event.inputs.py_version }}
+    #     cache: 'pipenv' # caching pip dependencies
+
     - name: setup mkl venv
       if: runner.os == 'Windows'
       run: |
@@ -52,6 +58,7 @@ jobs:
 
     - name: Build externals
       run: |
+        mkdir -p build
         cd build
         cmake ..
         cmake --build . --config Release
