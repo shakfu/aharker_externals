@@ -6,7 +6,7 @@ on:
       os:
         type: choice
         description: Please select an OS
-        default: macos-latest
+        default: windows-2019
         required: true
         options: 
           - macos-latest
@@ -50,10 +50,11 @@ jobs:
     - name: setup mkl venv
       if: runner.os == 'Windows'
       run: |
+        pip install virtualenv
         mkdir build
         cd build
-        python -m venv venv
-        venv\Scripts\activate.bat
+        virtualenv venv
+        venv\Scripts\activate
         pip install mkl-static
         ls venv/Library/lib
 
