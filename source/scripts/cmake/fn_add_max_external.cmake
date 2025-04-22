@@ -94,6 +94,7 @@ function(add_max_external)
         $<$<PLATFORM_ID:Windows>:_USERDLL>
         $<$<PLATFORM_ID:Windows>:WIN_EXT_VERSION>
         $<$<PLATFORM_ID:Windows>:_CRT_SECURE_NO_WARNINGS>
+
     )
 
     target_compile_options(
@@ -102,6 +103,11 @@ function(add_max_external)
         ${AHEXT_COMPILE_OPTIONS}
         $<$<PLATFORM_ID:Windows>:/O2>
         $<$<PLATFORM_ID:Windows>:/MD>
+        $<$<PLATFORM_ID:Darwin>:-Wmost>
+        $<$<PLATFORM_ID:Darwin>:-Wno-four-char-constants>
+        $<$<PLATFORM_ID:Darwin>:-Wno-unknown-pragmas>
+        $<$<PLATFORM_ID:Darwin>:-Wdeclaration-after-statement>
+        $<$<PLATFORM_ID:Darwin>:-fvisibility=hidden>
     )
 
     target_link_directories(

@@ -3,16 +3,15 @@ cmake_minimum_required(VERSION 3.19)
 string(REGEX REPLACE "(.*)/" "" THIS_FOLDER_NAME "${CMAKE_CURRENT_SOURCE_DIR}")
 project(${THIS_FOLDER_NAME})
 
+option(MACOS_UNIVERSAL "Build dual arch or native arch" OFF)
+
 set(COMMON_INCLUDES ${CMAKE_SOURCE_DIR}/source/includes)
-set(MACOS_UNIVERSAL)
     
 if (APPLE)
     if (${CMAKE_GENERATOR} MATCHES "Xcode")
             if (${XCODE_VERSION} VERSION_LESS 10)
                 message(STATUS "Xcode 10 or higher is required. Please install from the Mac App Store.")
                 return ()
-            # elseif(${XCODE_VERSION} VERSION_GREATER_EQUAL 12)
-            #     set(MACOS_UNIVERSAL YES)
             endif ()
     endif ()
 

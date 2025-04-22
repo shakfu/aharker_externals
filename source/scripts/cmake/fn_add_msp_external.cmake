@@ -103,6 +103,11 @@ function(add_msp_external)
         ${AHEXT_COMPILE_OPTIONS}
         $<$<PLATFORM_ID:Windows>:/O2>
         $<$<PLATFORM_ID:Windows>:/MD>
+        $<$<PLATFORM_ID:Darwin>:-Wmost>
+        $<$<PLATFORM_ID:Darwin>:-Wno-four-char-constants>
+        $<$<PLATFORM_ID:Darwin>:-Wno-unknown-pragmas>
+        $<$<PLATFORM_ID:Darwin>:-Wdeclaration-after-statement>
+        $<$<PLATFORM_ID:Darwin>:-fvisibility=hidden>
     )
 
     target_link_directories(
