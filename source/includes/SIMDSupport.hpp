@@ -315,8 +315,8 @@ struct SizedVector
     SV& operator *= (const SV& b) { return (*this = *this * b); }
     SV& operator /= (const SV& b) { return (*this = *this / b); }
     
-    friend SV (min(const SV& a, const SV& b)) { return op(a, b, std::min<VecType>()); }
-    friend SV (max(const SV& a, const SV& b)) { return op(a, b, std::max<VecType>()); }
+    friend SV min(const SV& a, const SV& b) { return op(a, b, (std::min)<VecType>()); }
+    friend SV max(const SV& a, const SV& b) { return op(a, b, (std::max)<VecType>()); }
     
     friend SV operator == (const SV& a, const SV& b) { return op(a, b, std::equal_to<VecType>()); }
     friend SV operator != (const SV& a, const SV& b) { return op(a, b, std::not_equal_to<VecType>()); }
