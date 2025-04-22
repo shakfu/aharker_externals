@@ -1,0 +1,73 @@
+name: builder
+
+on:
+  workflow_dispatch:
+    inputs:
+      os:
+        type: choice
+        description: Please select an OS
+        default: macos-latest
+        required: true
+        options: 
+          - macos-latest
+          - macos-15
+          - macos-14
+          - macos-13
+          - windows-latest
+          - windows-2025
+          - windows-2022
+          - windows-2019
+
+      py_version:
+        type: choice
+        description: Please select a python version
+        default: '3.13'
+        required: true
+        options:
+          - '3.9'
+          - '3.10'
+          - '3.11'
+          - '3.12'
+          - '3.13'
+jobs:
+  build:
+    runs-on: ${{ github.event.inputs.os }}
+
+    steps:
+
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+        fetch-depth: '0'
+
+    - uses: benjlevesque/short-sha@v1.2
+      id: short-sha
+      with:
+        length: 7
+
+    - name: Setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ github.event.inputs.py_version }}
+        cache: 'pip' # caching pip dependencies
+
+    - name: setup mkl venv
+      if: runner.os == 'Windows'
+      run: |
+        mkdir -p build
+        cd build
+        python.exe -m venv venv
+        venv\Scripts\activate.bat
+        pip install mkl-static
+
+    # - name: install python requirements
+    #   run: pip install -r requirements.txt
+
+    - name: Display python version
+      run: python3 --version
+
+    - name: Build externals
+      run: |
+        cd build
+        cmake ..
+        cmake --build . --config Release
