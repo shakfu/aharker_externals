@@ -18,17 +18,17 @@ on:
           - windows-2022
           - windows-2019
 
-      py_version:
-        type: choice
-        description: Please select a python version
-        default: '3.13'
-        required: true
-        options:
-          - '3.9'
-          - '3.10'
-          - '3.11'
-          - '3.12'
-          - '3.13'
+      # py_version:
+      #   type: choice
+      #   description: Please select a python version
+      #   default: '3.13'
+      #   required: true
+      #   options:
+      #     - '3.9'
+      #     - '3.10'
+      #     - '3.11'
+      #     - '3.12'
+      #     - '3.13'
 
 jobs:
   build:
@@ -41,28 +41,26 @@ jobs:
         submodules: 'recursive'
         fetch-depth: '0'
 
-    - uses: benjlevesque/short-sha@v1.2
-      id: short-sha
-      with:
-        length: 7
-
-    - name: Setup python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ github.event.inputs.py_version }}
-        cache: 'pipenv' # caching pip dependencies
+    # - name: Setup python
+    #   uses: actions/setup-python@v4
+    #   with:
+    #     python-version: ${{ github.event.inputs.py_version }}
+    #     cache: 'pipenv' # caching pip dependencies
 
     - name: setup mkl venv
       if: runner.os == 'Windows'
       run: |
-        export PIPENV_VENV_IN_PROJECT=1
-        pipenv install mkl-static
+        mkdir build
+        cd build
+        virtualenv venv
+        venv\Scripts\activate.bat
+        pip install mkl-static
 
     # - name: install python requirements
     #   run: pipenv install -r requirements.txt
 
-    - name: Display python version
-      run: python3 --version
+    # - name: Display python version
+    #   run: python3 --version
 
     - name: Build externals
       run: |
