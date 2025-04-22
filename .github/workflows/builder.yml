@@ -55,10 +55,11 @@ jobs:
         python -m venv venv
         venv\Scripts\activate.bat
         pip install mkl-static
+        ls venv/Library/lib
+        
 
-    - name: Build externals
-      run: |
-        mkdir -p build
-        cd build
-        cmake ..
-        cmake --build . --config Release
+    # - name: Build externals
+    #   run: |
+    #     cd build
+    #     cmake ..
+    #     cmake --build . --config Release
