@@ -74,23 +74,19 @@ function(add_msp_external)
 
     target_include_directories(
         ${AHEXT_PROJECT_NAME}
-        PRIVATE
+        PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${AHEXT_INCLUDE_DIRS}
         "$<$<PLATFORM_ID:Windows>:${CMAKE_BINARY_DIR}/venv/Library/include>"
     )
 
-    add_compile_definitions(
-        "$<$<PLATFORM_ID:Windows>:/D NOMINMAX>"
-    )
-
     target_compile_definitions(
         ${AHEXT_PROJECT_NAME}
-        PRIVATE
+        PUBLIC
         ${AHEXT_COMPILE_DEFINITIONS}
         $<$<BOOL:${AHEXT_INCLUDE_COMMONSYMS}>:-DINCLUDE_COMMONSYMS>
         $<$<PLATFORM_ID:Darwin>:NDEBUG>
-        # "$<$<PLATFORM_ID:Windows>:/D NOMINMAX>"
+        $<$<PLATFORM_ID:Windows>:NOMINMAX>
         # $<$<PLATFORM_ID:Windows>:_USE_MATH_DEFINES>
         # $<$<PLATFORM_ID:Windows>:WIN_VERSION>
         # $<$<PLATFORM_ID:Windows>:WIN64>
@@ -103,7 +99,7 @@ function(add_msp_external)
 
     target_compile_options(
         ${AHEXT_PROJECT_NAME}
-        PRIVATE
+        PUBLIC
         ${AHEXT_COMPILE_OPTIONS}
         $<$<PLATFORM_ID:Windows>:/O2>
         $<$<PLATFORM_ID:Windows>:/MD>
@@ -116,7 +112,7 @@ function(add_msp_external)
 
     target_link_directories(
         ${AHEXT_PROJECT_NAME} 
-        PRIVATE
+        PUBLIC
         ${AHEXT_LINK_DIRS}
         $<$<PLATFORM_ID:Windows>:${CMAKE_BINARY_DIR}/venv/Lib>
         $<$<PLATFORM_ID:Windows>:${CMAKE_BINARY_DIR}/venv/Library/lib>
@@ -124,13 +120,13 @@ function(add_msp_external)
 
     target_link_options(
         ${AHEXT_PROJECT_NAME}
-        PRIVATE
+        PUBLIC
         ${AHEXT_LINK_OPTIONS}
     )
 
     target_link_libraries(
         ${AHEXT_PROJECT_NAME} 
-        PRIVATE
+        PUBLIC
         "${AHEXT_LINK_LIBS}"
         "$<$<PLATFORM_ID:Darwin>:-framework Accelerate>"
         # $<$<PLATFORM_ID:Windows>:umf>
