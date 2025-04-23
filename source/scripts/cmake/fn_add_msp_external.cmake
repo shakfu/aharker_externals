@@ -86,7 +86,7 @@ function(add_msp_external)
         ${AHEXT_COMPILE_DEFINITIONS}
         $<$<BOOL:${AHEXT_INCLUDE_COMMONSYMS}>:INCLUDE_COMMONSYMS>
         $<$<PLATFORM_ID:Darwin>:NDEBUG>
-        $<$<PLATFORM_ID:Windows>:NOMINMAX>
+        $<$<PLATFORM_ID:Windows>:/D "NOMINMAX">
         # $<$<PLATFORM_ID:Windows>:_USE_MATH_DEFINES>
         # $<$<PLATFORM_ID:Windows>:WIN_VERSION>
         # $<$<PLATFORM_ID:Windows>:WIN64>
