@@ -86,7 +86,7 @@ function(add_max_external)
         ${AHEXT_COMPILE_DEFINITIONS}
         $<$<BOOL:${AHEXT_INCLUDE_COMMONSYMS}>:INCLUDE_COMMONSYMS>
         $<$<PLATFORM_ID:Darwin>:NDEBUG>
-        $<$<PLATFORM_ID:Windows>:/D "NOMINMAX">
+        # $<$<PLATFORM_ID:Windows>:/D "NOMINMAX">
         # $<$<PLATFORM_ID:Windows>:_USE_MATH_DEFINES>
         # $<$<PLATFORM_ID:Windows>:WIN_VERSION>
         # $<$<PLATFORM_ID:Windows>:WIN64>
@@ -103,6 +103,7 @@ function(add_max_external)
         ${AHEXT_COMPILE_OPTIONS}
         $<$<PLATFORM_ID:Windows>:/O2>
         $<$<PLATFORM_ID:Windows>:/MD>
+        $<$<PLATFORM_ID:Windows>:/D "NOMINMAX">
         $<$<PLATFORM_ID:Darwin>:-Wmost>
         $<$<PLATFORM_ID:Darwin>:-Wno-four-char-constants>
         $<$<PLATFORM_ID:Darwin>:-Wno-unknown-pragmas>
