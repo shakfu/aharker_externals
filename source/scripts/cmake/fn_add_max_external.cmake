@@ -84,9 +84,9 @@ function(add_max_external)
         ${AHEXT_PROJECT_NAME}
         PRIVATE
         ${AHEXT_COMPILE_DEFINITIONS}
-        $<$<BOOL:${AHEXT_INCLUDE_COMMONSYMS}>:-DINCLUDE_COMMONSYMS>
+        $<$<BOOL:${AHEXT_INCLUDE_COMMONSYMS}>:INCLUDE_COMMONSYMS>
         $<$<PLATFORM_ID:Darwin>:NDEBUG>
-        # $<$<PLATFORM_ID:Windows>:NOMINMAX>
+        $<$<PLATFORM_ID:Windows>:NOMINMAX>
         # $<$<PLATFORM_ID:Windows>:_USE_MATH_DEFINES>
         # $<$<PLATFORM_ID:Windows>:WIN_VERSION>
         # $<$<PLATFORM_ID:Windows>:WIN64>
