@@ -47,7 +47,7 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: aharker-win64-externals
+        name: aharker-externals-win64
         path: |
             docs
             externals
@@ -75,7 +75,7 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: aharker-macos-externals
+        name: aharker-externals-macos
         path: |
             docs
             externals
