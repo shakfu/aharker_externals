@@ -13,12 +13,6 @@ on:
           - macos-14
           - macos-13
 
-      enable_macos:
-        type: boolean
-        description: Enable MacOS build
-        required: true
-        default: true
-
       windows_version:
         type: choice
         description: Select Windows version
@@ -30,15 +24,8 @@ on:
           - windows-2022
           - windows-2019
 
-      enable_windows:
-        type: boolean
-        description: Enable Windows build
-        required: true
-        default: true
-
 jobs:
   build-windows:
-    if: github.event.inputs.enable_windows == true
     runs-on: ${{ github.event.inputs.windows_version }}
     steps:
 
@@ -71,7 +58,6 @@ jobs:
 
 
   build-macos:
-    if: github.event.inputs.enable_macos == true
     runs-on: ${{ github.event.inputs.macos_version }}
     steps:
 
