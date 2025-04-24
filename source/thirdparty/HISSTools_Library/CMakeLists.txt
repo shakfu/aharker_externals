@@ -39,8 +39,34 @@ add_library(
 	WindowFunctions.hpp
 )
 
+
+# add_library(
+# 	hisstools
+# 	STATIC
+# 	AudioFile/BaseAudioFile.cpp
+# 	AudioFile/IAudioFile.cpp
+# 	AudioFile/OAudioFile.cpp
+# 	HIRT_Multichannel_Convolution/Convolver.cpp
+# 	HIRT_Multichannel_Convolution/ConvolveSIMD.h
+# 	HIRT_Multichannel_Convolution/MonoConvolve.cpp
+# 	HIRT_Multichannel_Convolution/NToMonoConvolve.cpp
+# 	HIRT_Multichannel_Convolution/PartitionedConvolve.cpp
+# 	HIRT_Multichannel_Convolution/TimeDomainConvolve.cpp
+# 	HISSTools_FFT/HISSTools_FFT.cpp
+# )
+
+# target_include_directories(
+#     hisstools
+#     PRIVATE
+#     ${CMAKE_CURRENT_SOURCE_DIR}
+#     ${CMAKE_CURRENT_SOURCE_DIR}/AudioFile
+#     ${CMAKE_CURRENT_SOURCE_DIR}/HISSTools_FFT
+#     ${CMAKE_CURRENT_SOURCE_DIR}/HIRT_Multichannel_Convolution
+# )
+
+
 target_compile_options(
-    ibuffer_access
+    hisstools
     PRIVATE
     $<$<PLATFORM_ID:Windows>:/O2>
     $<$<PLATFORM_ID:Windows>:/MT>
