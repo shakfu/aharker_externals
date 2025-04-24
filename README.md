@@ -39,6 +39,8 @@ Conversion completed:
 
 [^1]: `ajh.wiiremote` is not converted because some of the `IOBluetooth.framework` c-apis it uses are deprecated with only objc api replacements available.
 
+Thanks to Alex Harker for help in sorting out some build issues.
+
 ## Overview
 
 

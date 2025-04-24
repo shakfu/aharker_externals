@@ -1,0 +1,99 @@
+name: build-optional
+on:
+  workflow_dispatch:
+    inputs:
+      macos_version:
+        type: choice
+        description: Select MacOS version
+        default: macos-14
+        required: true
+        options:
+          - macos-latest
+          - macos-15
+          - macos-14
+          - macos-13
+
+      enable_macos:
+        type: boolean
+        description: Enable MacOS build
+        required: true
+        default: true
+
+      windows_version:
+        type: choice
+        description: Select Windows version
+        default: windows-2019
+        required: true
+        options:
+          - windows-latest
+          - windows-2025
+          - windows-2022
+          - windows-2019
+
+      enable_windows:
+        type: boolean
+        description: Enable Windows build
+        required: true
+        default: true
+
+jobs:
+  build-windows:
+    if: ${{ github.event.inputs.enable_windows }}
+    runs-on: ${{ github.event.inputs.windows_version 
+    steps:
+
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+        fetch-depth: '0'
+
+    - name: setup mkl venv
+      if: runner.os == 'Windows'
+      run: python source/scripts/install_mkl.py
+
+    - name: Build externals on Windows
+      if: runner.os == 'Windows'
+      run: |
+        cd build
+        cmake ..
+        cmake --build . --config Release
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: aharker-externals-win64
+        path: |
+            docs
+            externals
+            help
+            misc
+            LICENSE
+            README.md
+
+
+  build-macos:
+    if: ${{ github.event.inputs.enable_macos }}
+    runs-on: ${{ github.event.inputs.macos_version }}
+    steps:
+
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+        fetch-depth: '0'
+
+    - name: Build externals
+      run: |
+        mkdir -p build
+        cd build
+        cmake .. -GXcode
+        cmake --build . --config Release
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: aharker-externals-macos
+        path: |
+            docs
+            externals
+            help
+            misc
+            LICENSE
+            README.md
