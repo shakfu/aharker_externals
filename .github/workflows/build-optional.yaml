@@ -38,7 +38,7 @@ on:
 
 jobs:
   build-windows:
-    if: ${{ github.event.inputs.enable_windows }}
+    if: ${{ github.event.inputs.enable_windows == true }}
     runs-on: ${{ github.event.inputs.windows_version }}
     steps:
 
@@ -71,7 +71,7 @@ jobs:
 
 
   build-macos:
-    if: ${{ github.event.inputs.enable_macos }}
+    if: ${{ github.event.inputs.enable_macos == true }}
     runs-on: ${{ github.event.inputs.macos_version }}
     steps:
 
