@@ -50,6 +50,7 @@ jobs:
       with:
         name: win64-externals
         path: externals/*.mxe64
+        retention-days: 1
 
   build-macos:
     runs-on: ${{ github.event.inputs.macos_version }}
@@ -73,6 +74,7 @@ jobs:
       with:
         name: macos-externals
         path: externals/*.mxo
+        retention-days: 1
 
   build-package:
     runs-on: ubuntu-latest
