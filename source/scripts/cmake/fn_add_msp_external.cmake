@@ -87,13 +87,13 @@ function(add_msp_external)
         $<$<BOOL:${AHEXT_INCLUDE_COMMONSYMS}>:INCLUDE_COMMONSYMS>
         $<$<PLATFORM_ID:Darwin>:NDEBUG>
         $<$<PLATFORM_ID:Windows>:NOMINMAX>
-        # $<$<PLATFORM_ID:Windows>:_USE_MATH_DEFINES>
-        # $<$<PLATFORM_ID:Windows>:WIN_VERSION>
-        # $<$<PLATFORM_ID:Windows>:WIN64>
-        # $<$<PLATFORM_ID:Windows>:_WINDOWS>
-        # $<$<PLATFORM_ID:Windows>:_USERDLL>
-        # $<$<PLATFORM_ID:Windows>:WIN_EXT_VERSION>
-        # $<$<PLATFORM_ID:Windows>:_CRT_SECURE_NO_WARNINGS>
+        $<$<PLATFORM_ID:Windows>:_USE_MATH_DEFINES>
+        $<$<PLATFORM_ID:Windows>:WIN_VERSION>
+        $<$<PLATFORM_ID:Windows>:WIN64>
+        $<$<PLATFORM_ID:Windows>:_WINDOWS>
+        $<$<PLATFORM_ID:Windows>:_USERDLL>
+        $<$<PLATFORM_ID:Windows>:WIN_EXT_VERSION>
+        $<$<PLATFORM_ID:Windows>:_CRT_SECURE_NO_WARNINGS>
         MSP_VERSION
     )
 
