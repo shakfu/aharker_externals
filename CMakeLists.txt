@@ -3,6 +3,10 @@ cmake_minimum_required(VERSION 3.19)
 string(REGEX REPLACE "(.*)/" "" THIS_FOLDER_NAME "${CMAKE_CURRENT_SOURCE_DIR}")
 project(${THIS_FOLDER_NAME})
 
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 option(MACOS_UNIVERSAL "Build dual arch or native arch" OFF)
 
 set(COMMON_INCLUDES ${CMAKE_SOURCE_DIR}/source/includes)
