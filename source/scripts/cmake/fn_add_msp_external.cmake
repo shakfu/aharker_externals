@@ -102,7 +102,7 @@ function(add_msp_external)
         PRIVATE
         ${AHEXT_COMPILE_OPTIONS}
         $<$<PLATFORM_ID:Windows>:/O2>
-        $<$<PLATFORM_ID:Windows>:/MD>
+        $<$<PLATFORM_ID:Windows>:/MT>
         $<$<PLATFORM_ID:Darwin>:-Wmost>
         $<$<PLATFORM_ID:Darwin>:-Wno-four-char-constants>
         $<$<PLATFORM_ID:Darwin>:-Wno-unknown-pragmas>
