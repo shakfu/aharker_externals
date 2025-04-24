@@ -39,7 +39,7 @@ on:
 jobs:
   build-windows:
     if: ${{ github.event.inputs.enable_windows }}
-    runs-on: ${{ github.event.inputs.windows_version 
+    runs-on: ${{ github.event.inputs.windows_version }}
     steps:
 
     - uses: actions/checkout@v3
