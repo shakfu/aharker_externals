@@ -13,6 +13,7 @@ jobs:
 
     - name: Build externals
       run: |
+        mkdir -p build
         cd build
         cmake .. -GXcode
         cmake --build . --config Release
