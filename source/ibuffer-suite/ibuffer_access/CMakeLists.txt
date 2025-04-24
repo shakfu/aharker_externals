@@ -19,11 +19,11 @@ target_compile_options(
     PRIVATE
     $<$<PLATFORM_ID:Windows>:/O2>
     $<$<PLATFORM_ID:Windows>:/MT>
-    # $<$<PLATFORM_ID:Darwin>:-Wmost>
-    # $<$<PLATFORM_ID:Darwin>:-Wno-four-char-constants>
-    # $<$<PLATFORM_ID:Darwin>:-Wno-unknown-pragmas>
-    # $<$<PLATFORM_ID:Darwin>:-Wdeclaration-after-statement>
-    # $<$<PLATFORM_ID:Darwin>:-fvisibility=hidden>
+    $<$<PLATFORM_ID:Darwin>:-Wmost>
+    $<$<PLATFORM_ID:Darwin>:-Wno-four-char-constants>
+    $<$<PLATFORM_ID:Darwin>:-Wno-unknown-pragmas>
+    $<$<PLATFORM_ID:Darwin>:-Wdeclaration-after-statement>
+    $<$<PLATFORM_ID:Darwin>:-fvisibility=hidden>
 )
 
 target_compile_definitions(
