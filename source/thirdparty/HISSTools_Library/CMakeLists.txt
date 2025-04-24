@@ -2,7 +2,7 @@
 
 add_library(
 	hisstools
-	STATIC
+	SHARED
 	AudioFile/BaseAudioFile.cpp
 	AudioFile/IAudioFile.cpp
 	AudioFile/OAudioFile.cpp
