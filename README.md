@@ -39,6 +39,31 @@ Conversion completed:
 
 [^1]: `ajh.wiiremote` is not converted because some of the `IOBluetooth.framework` c-apis it uses are deprecated with only objc api replacements available.
 
+### Building
+
+On MacOS, you can build via `make` or `make macos` or
+
+```sh
+mkdir -p build
+cd build
+cmake .. -GXcode
+cmake --build . --config Release
+```
+
+On Windows, you can build via `make windows` if `make.exe` is available or
+
+
+```sh
+mkdir build
+python source/scripts/install_mkl.py # once to install mkl
+cd build
+cmake .. -GXcode
+cmake --build . --config Release
+```
+
+Note that `make windows` does the above automatically.
+
+
 Thanks to Alex Harker for help in sorting out some build issues.
 
 ## Overview
