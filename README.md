@@ -57,7 +57,7 @@ On Windows, you can build via `make windows` if `make.exe` is available or
 mkdir build
 python source/scripts/install_mkl.py # once to install mkl
 cd build
-cmake .. -GXcode
+cmake ..
 cmake --build . --config Release
 ```
 
