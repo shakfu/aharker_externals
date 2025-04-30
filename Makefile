@@ -2,22 +2,13 @@ MAX_VERSION := 9
 PACKAGE_NAME := aharker_externals
 PACKAGE := "$(HOME)/Documents/Max\ $(MAX_VERSION)/Packages/$(PACKAGE_NAME)"
 
-ifeq ($(OS),Darwin)
-    GENERATOR := "Xcode"
-else
-    GENERATOR := "Visual Studio 16 2019" # Windows_NT
-endif
 
 
 .PHONY: all build macos macos_universal windows dev clean reset sync link setup
 
 all: build
 
-build:
-	@mkdir -p build && \
-		cd build && \
-		cmake .. -G $(GENERATOR) && \
-		cmake --build . --config Release
+build: macos
 
 build/venv/Library/lib/mkl_core.lib:
 	python source/scripts/install_mkl.py

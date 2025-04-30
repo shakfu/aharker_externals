@@ -1,12 +1,7 @@
 include(${CMAKE_CURRENT_SOURCE_DIR}/../../max-sdk-base/script/max-pretarget.cmake)
 
 
-add_msp_external(
-	PROJECT_SOURCE
-		${CMAKE_CURRENT_SOURCE_DIR}/../randomvals/randomvals.cpp
-	COMPILE_DEFINITIONS
-		"MSP_VERSION"
-)
+add_max_external()
 
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/../../max-sdk-base/script/max-posttarget.cmake)
