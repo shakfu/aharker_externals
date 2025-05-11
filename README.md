@@ -39,6 +39,9 @@ Conversion completed:
 
 [^1]: `ajh.wiiremote` is not converted because some of the `IOBluetooth.framework` c-apis it uses are deprecated with only objc api replacements available.
 
+**Update**: Many of the changes proposed in this fork were incorporated in the upstream repo and were discussed extensively in this [issue](https://github.com/AlexHarker/AHarker_Externals).
+
+
 ### Building
 
 On MacOS, you can build via `make` or `make macos` or
